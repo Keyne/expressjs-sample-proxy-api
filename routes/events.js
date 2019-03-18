@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 const https = require('https');
 
-var data = '';
-var response = [];
-var timeline = [];
-
 function findCustomData(arr, key) {
   for(var jj=0; jj<arr.length; jj++) {
     if (arr[jj].key === key) {
@@ -25,6 +21,10 @@ function compareTime(a, b) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+
+  var data = '';
+  var response = [];
+  var timeline = [];
 
   https.get('https://storage.googleapis.com/dito-questions/events.json', function (resp) {
 
